@@ -1,6 +1,8 @@
 const dbConfig = require("../config/dbConfig");
 const { Sequelize, DataTypes } = require("sequelize");
 
+
+//laaa sequelize yo config haru lag ani database connect gardey vanko hai ani yadi connect hunxa vani connect dekhana ntra error dekha
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
@@ -27,7 +29,10 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.products = require("./blogModel.js")(sequelize, DataTypes);
+// importing model files
+db.blogs = require("./blogModel.js")(sequelize, DataTypes);
+db.users = require("./userModel.js")(sequelize, DataTypes);
+
 
 
 db.sequelize.sync({ force: false }).then(() => {
