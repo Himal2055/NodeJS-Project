@@ -1,6 +1,9 @@
 const express = require("express")
 const app = express()
 
+//database connection
+require("./model/index")
+
 // telling the nodejs to set view- engine to ejs
 app.set("view engine","ejs")
 
