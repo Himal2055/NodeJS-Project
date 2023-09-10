@@ -13,8 +13,14 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 //allBlogs
-app.get('/',(req,res)=>{
-    res.render("blogs.ejs")
+app.get("/",async(req,res)=>{
+    //Blogs vanni table bata vayajati sabai data dey vane ko
+    const allBlogs = await blogs.findAll()
+    // console.log(allBlogs)
+
+
+    //blogs vanney key/name ma allBlog/data pass gareko ejs file lai
+    res.render("blogs",{blogs:allBlogs})
 })
 
 
@@ -29,7 +35,7 @@ app.post("/createBlogs",async(req,res) =>{
     
     //first approach
     const title = req.body.title
-    const subTitle = req.body.subTitle
+    const subTitle = req.body.subtitle
     const description = req.body.description
    
     
@@ -48,8 +54,15 @@ app.post("/createBlogs",async(req,res) =>{
         subTitle : subTitle,
         description : description
     })
-    res.send("form is submitted succesfully")
+    res.redirect("/")
 })
+
+
+// database / table bata data kasari nikalni
+
+
+
+
 
 app.listen(3000,()=>{
     console.log("Nodejs has started on port 3000")
