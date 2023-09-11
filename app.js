@@ -58,7 +58,10 @@ app.post("/createBlogs",async(req,res) =>{
 })
 
 
-// database / table bata data kasari nikalni
+// single blog page
+app.get("/single/:id",(req,res)=>{
+    res.render("singleBlog.ejs")
+})
 
 
 
