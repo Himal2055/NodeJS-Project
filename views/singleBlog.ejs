@@ -75,20 +75,19 @@
 
     <div class="container">
         <div class="post">
-            <div class="author-name">Title</div>
-            <div class="author-name">SubTitle</div>
-            <div class="author-name">description</div>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum tortor id risus congue, sit amet dapibus massa dignissim. Sed eleifend arcu non mi tincidunt, at fringilla mi varius.</p>
-        
-
-
-            <p>Proin ut est eu sem venenatis dignissim. Integer ut ex nec purus consectetur hendrerit ut nec sem. In fringilla purus non felis ultrices, eget ultricies justo facilisis.</p>
+            <div class="author-name"><%- blog[0].title %></div>
+            <div class="author-name"><%- blog[0].subTitle %></div>
         </div>
+
+        <div class="post-content">
+            <p><%- blog[0].description %></p>
+        </div>
+
+    <div class="post-footer">
+        <!-- here toISOString() is to remove unecessary time zone data and slice cut and throw the data outside the parameter -->
+        Published on <%- blog[0].createdAt.toISOString().slice(0,10) %> 
+    </div>
     </div>
 
-    <footer>
-        &copy; 2023 My Blog
-    </footer>
 </body>
 </html>
