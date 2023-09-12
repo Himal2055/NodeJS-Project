@@ -82,7 +82,17 @@ app.get("/single/:id",async(req,res)=>{
 })
 
 
-
+// delete page
+app.get("/delete/:id",async(req,res)=>{
+    const id = req.params.id
+    //blogs vanni table bata tyo id ko delete garw vane ko 
+   await blogs.destroy({
+        where:{
+            id : id
+        }
+    })
+    res.redirect("/")
+})
 
 
 app.listen(3000,()=>{
