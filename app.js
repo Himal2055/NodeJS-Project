@@ -95,6 +95,54 @@ app.get("/delete/:id",async(req,res)=>{
 })
 
 
+//Edit blog
+
+app.get("/edit/:id",async(req,res)=>{
+    // res.render("editBlog")
+    const id = req.params.id
+    //find blog of that id
+    const blog = await blogs.findAll({
+        where:{
+            id : id
+        }
+    })
+
+    res.render("editBlog",{blog : blog})
+})
+app.post("/editBlog/:id",async(req,res)=>{
+
+
+    //body bata j j aako xa title subTile teo sab database ma halde vane ko
+
+    const id = req.params.id
+    // console.log(req.body)
+
+    const title = req.body.title
+    const subTitle = req.body.subtitle
+    const description = req.body.description 
+
+    // First approach yo na garni kina ki yesma loophole xa
+
+        // await blogs.update(req.body,{
+        //     where :{
+        //         id : id
+        //     }
+        // })
+
+
+    //Second apprach  (JUn blog ko id ma change garya tai id ko lage rw halde vane ko )
+    await blogs.update({
+        title :title,
+        subTitle: subTitle,
+        description : description
+    },{
+        where : {
+            id : id
+        }
+    })
+    res.redirect("/single/" + id)
+})
+
 app.listen(3000,()=>{
     console.log("Nodejs has started on port 3000")
 })
