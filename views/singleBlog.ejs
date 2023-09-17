@@ -3,75 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>My Blog</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
+    <link rel="stylesheet" href="css/singleBlog.css">
 
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 36px;
-        }
-
-        nav {
-            background-color: #555;
-            color: #fff;
-            padding: 10px;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .post {
-            margin-bottom: 30px;
-        }
-
-        .post h2 {
-            font-size: 24px;
-            margin-top: 0;
-        }
-
-        .post p {
-            line-height: 1.6;
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-        }
-    </style>
 </head>
 <body>
-    <header>
-        <h1>CMS</h1>
-    </header>
+
+    <%- include("components/navbar.ejs") %>
+
 
     <div class="container">
         <div class="post">
@@ -91,6 +29,9 @@
     <button><a href="/edit/<%- blog[0].id %>">Edit</a></button>
 
     </div>
+
+    <%- include("components/footer.ejs") %>
+
 
 </body>
 </html>

@@ -8,6 +8,12 @@ require("./model/index")
 // telling the nodejs to set view- engine to ejs
 app.set("view engine","ejs")
 
+
+// nodejs lae file access garna dey vaneko haii
+app.use(express.static("public/"))
+
+
+
 // form bata data aairaxa parse gara or handle gar vaneko ho
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -21,6 +27,12 @@ app.get("/",async(req,res)=>{
 
     //blogs vanney key/name ma allBlog/data pass gareko ejs file lai
     res.render("blogs",{blogs:allBlogs})
+
+    // This is for fontend developer lae dina paryoo vani
+    // res.json({
+    //     status : 200,
+    //     blogs : allBlogs
+    // })
 })
 
 
@@ -55,6 +67,13 @@ app.post("/createBlogs",async(req,res) =>{
         description : description
     })
     res.redirect("/")
+
+    // This is for fontend developer lae dina paryoo vani
+
+    // res.json({
+    //     status : 200,
+    //     message : "Blog created sucesfully"
+    // })
 })
 
 
