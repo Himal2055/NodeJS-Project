@@ -1,4 +1,4 @@
-const { renderCreateBlog, createBlog } = require("../controller/blog/blogcontroller");
+const { renderCreateBlog, createBlog, allBlog, singleBlog, deleteBlog, editBlog, renderEditblog } = require("../controller/blog/blogcontroller");
 
 const router = require("express").Router()
 
@@ -9,6 +9,24 @@ const router = require("express").Router()
 
 // yesto lae hami restful api vanxau
 
-router.route("/createBlog").get(renderCreateBlog).post(createBlog)
+router.route("/createBlogs").get(renderCreateBlog).post(createBlog)
+
+// all blogs ko lagi
+router.route("/").get(allBlog)
+
+// single blog page
+router.route("/single/:id").get(singleBlog)
+
+// delete page
+router.route("/delete/:id").get(deleteBlog)
+
+//Edit blog
+router.route("/edit/:id").get(renderEditblog)
+router.route("/editBlog/:id").post(editBlog)
+
+
+//RESTfull api for above blog having id 
+
+// router.route("/:id").get(singleBlog).get(deleteBlog).get(renderEditblog).post(editBlog)
 
 module.exports =router;

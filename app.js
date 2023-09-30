@@ -3,6 +3,10 @@ const { blogs } = require('./model/index')
 const { renderCreateBlog, createBlog, allblog, singleBlog, deleteBlog, editBlog, allBlog, renderEditblog } = require("./controller/blog/blogcontroller")
 const app = express()
 
+//Routes Here
+const blogRoute = require("./routes/blogRoute")
+
+
 //database connection
 require("./model/index")
 
@@ -21,28 +25,15 @@ app.use(express.static("home/"))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-app.get("/portfolio",(req,res)=>{
-    res.render("index.ejs")
-})
+app.use("",blogRoute) // localhost:3000 + /createBlog === localhost:3000/createBlog
 
-//allBlogs
-app.get("/",allBlog)
+//Example of mathi
 
-
-// single blog page
-app.get("/single/:id",singleBlog)
+// app.use("/hello",blogRoute) // localhost:3000/hello + /createBlog === localhost:3000/hello/createBlog
 
 
-// delete page
-app.get("/delete/:id",deleteBlog)
 
-
-//Edit blog
-
-app.get("/edit/:id",renderEditblog)
-
-app.post("/editBlog/:id",editBlog)
-
+// server listening
 app.listen(3000,()=>{
     console.log("Nodejs has started on port 3000")
 })
